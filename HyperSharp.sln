@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperSharp", "HyperSharp\HyperSharp.csproj", "{7B896684-BE23-4070-ACB7-9113EEA1B71D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B896684-BE23-4070-ACB7-9113EEA1B71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B896684-BE23-4070-ACB7-9113EEA1B71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B896684-BE23-4070-ACB7-9113EEA1B71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B896684-BE23-4070-ACB7-9113EEA1B71D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
