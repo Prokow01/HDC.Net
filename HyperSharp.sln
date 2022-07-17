@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperSharp", "HyperSharp\HyperSharp.csproj", "{7B896684-BE23-4070-ACB7-9113EEA1B71D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.HyperSharp", "Testing.HyperSharp\Testing.HyperSharp.csproj", "{FC038BAE-7774-4D5A-BAAC-494AE7B8E1B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{7B896684-BE23-4070-ACB7-9113EEA1B71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B896684-BE23-4070-ACB7-9113EEA1B71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B896684-BE23-4070-ACB7-9113EEA1B71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC038BAE-7774-4D5A-BAAC-494AE7B8E1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC038BAE-7774-4D5A-BAAC-494AE7B8E1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC038BAE-7774-4D5A-BAAC-494AE7B8E1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC038BAE-7774-4D5A-BAAC-494AE7B8E1B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

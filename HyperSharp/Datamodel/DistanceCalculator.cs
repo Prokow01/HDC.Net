@@ -1,4 +1,4 @@
-namespace HyperSharp.Calculators {
+namespace HyperSharp.Datamodel {
     public class DistanceCalculator {
         
     }
