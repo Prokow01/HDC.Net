@@ -74,7 +74,19 @@ namespace HyperSharp.Datamodel {
         /// </summary>
         /// <returns></returns>
         public HyperVector Bundle(HyperVector other) {
-            throw new NotImplementedException();
+            if (!_VectorsAreCompatible(other)) {
+                throw new Exception($"Vectors are not compatible");
+            }
+            
+            int[] tmpVect = new int[Dimensions];
+            for (int i = 0; i < Dimensions; i++) {
+                tmpVect[i] = _vector[i] * other.Get(i);
+            }
+
+            HyperVector rVector = new HyperVector(Dimensions, false);
+            rVector.Set(tmpVect);
+
+            return rVector;
         }
         
 

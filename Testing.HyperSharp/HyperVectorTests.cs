@@ -7,6 +7,7 @@
 // Last Modified: 2022-07-16
 // By: Peter Rokowski
 
+using System;
 using FluentAssertions;
 using HyperSharp.Datamodel;
 
@@ -171,6 +172,42 @@ namespace Testing.HyperSharp {
             for (int i = 0; i < vectorSize; i++) {
                 a.Get(i).Should().NotBe(expectedValues[i]);
             }
+        }
+
+        [Fact]
+        public void BundleTest() {
+            int vectorSize = 10;
+            HyperVector a = new HyperVector(vectorSize, false);
+            HyperVector b = new HyperVector(vectorSize, false);
+
+            int[] setValue = { 1, -1, 1, 1, 1, 1, 1, -1, 1, 1 };
+            int[] setValue2 = { 1, -1, 1, 1, 1, 1, 1, -1, 1, 1 };
+
+            a.Set(setValue);
+            b.Set(setValue2);
+            
+            HyperVector c = a.Bundle(b);
+
+            for (int i = 0; i < vectorSize; i++) {
+                c.Get(i).Should().Be(1);
+            }
+        }
+        
+        [Fact]
+        public void BundleTest_IncompatibleVectors() {
+            int vectorSize = 10;
+            HyperVector a = new HyperVector(vectorSize, false);
+            HyperVector b = new HyperVector(vectorSize+1, false);
+
+            int[] setValue = { 1, -1, 1, 1, 1, 1, 1, -1, 1, 1 };
+            int[] setValue2 = { 1, -1, 1, 1, 1, 1, 1, -1, 1, 1, -1 };
+
+            a.Set(setValue);
+            b.Set(setValue2);
+            
+            a.Invoking(y => a.Bundle(b))
+             .Should().Throw<Exception>()
+             .WithMessage("Vectors are not compatible");
         }
     }
 }
