@@ -504,4 +504,5 @@ Temporary Items
 .apdisk
 
 # specialized uncompressed ubyte formats
-*.ubyte
+*.idx3-ubyte
+*.idx1-ubyte
