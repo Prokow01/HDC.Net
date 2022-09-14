@@ -2,16 +2,19 @@ using System;
 
 namespace HyperSharp.Datamodel {
     /// <summary>
-    /// Notes: turn into VectorOps class or something, also HyperVectors can exist in multiple polarities not just bipolar
+    /// Notes: HyperVectors can exist in multiple polarities not just bipolar
+    ///     - make base class and have this guy exists as a BinaryHyperVector Object, implement IHyperVector as well
     /// </summary>
     public class HyperVector {
+        private const int DefaultDimensions = 10000;
+
         private readonly int[] _vector;
         public int Dimensions { get; }
 
         /// <summary>
         /// The base class, this should have up to thousands of dimensions and basic operations. todo override + and * operators
         /// </summary>
-        public HyperVector(int dimensions=10000, bool initialize = true) {
+        public HyperVector(int dimensions=DefaultDimensions, bool initialize = true) {
             Dimensions = dimensions;
             _vector = new int[Dimensions];
 
@@ -77,7 +80,7 @@ namespace HyperSharp.Datamodel {
             if (!_VectorsAreCompatible(other)) {
                 throw new Exception($"Vectors are not compatible");
             }
-            
+
             int[] tmpVect = new int[Dimensions];
             for (int i = 0; i < Dimensions; i++) {
                 tmpVect[i] = _vector[i] * other.Get(i);
@@ -88,7 +91,6 @@ namespace HyperSharp.Datamodel {
 
             return rVector;
         }
-        
 
         /// <summary>
         /// dotcompare; over ==
@@ -97,8 +99,7 @@ namespace HyperSharp.Datamodel {
         public bool Equals(HyperVector other) {
             if (Dimensions != other.Dimensions)
                 return false;
-                // throw new Exception($"hypervectors are not of the same dimensions {Dimensions} != {other.Dimensions}");
-                
+
             for (int i = 0; i < Dimensions; i++) {
                 if (_vector[i] != other.Get(i))
                     return false;
@@ -116,6 +117,20 @@ namespace HyperSharp.Datamodel {
             for (int i = 0; i < Dimensions; i++) {
                 _vector[i] = (r.Next(0, 2)==0) ? -1 : 1;
             }
+        }
+
+
+        /// <summary>
+        /// Static Method Generating a new hyper-vector
+        /// </summary>
+        /// <param name="dimensions">defaults to 10000</param>
+        /// <returns></returns>
+        public static HyperVector NewVector(int dimensions=DefaultDimensions) {
+            HyperVector rVector = new HyperVector(dimensions);
+            
+            rVector.InitializeBinary();
+
+            return rVector;
         }
     }
 }

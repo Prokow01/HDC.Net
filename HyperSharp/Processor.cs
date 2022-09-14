@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using HyperSharp.Datamodel;
 
 namespace HyperSharp {
+    /// <summary>
+    /// Really an MNIST processor, this needs to be extracted and abstracted away to make a little more general-purpose.
+    /// </summary>
     public class Processor {
         private readonly Dictionary<int, HyperVector> _grayscaleLookup = new Dictionary<int, HyperVector>();
         private readonly Dictionary<int, HyperVector> _positionLookup = new Dictionary<int, HyperVector>();
