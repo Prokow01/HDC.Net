@@ -866,3 +866,6 @@ Temporary Items
 
 .idea/**/*
 .idea/**
+
+Data/mnist_data/
+Data/mnist_data/**
