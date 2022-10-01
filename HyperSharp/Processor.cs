@@ -9,8 +9,7 @@ namespace HyperSharp {
         private readonly Dictionary<int, HyperVector> _grayscaleLookup = new Dictionary<int, HyperVector>();
         private readonly Dictionary<int, HyperVector> _positionLookup = new Dictionary<int, HyperVector>();
         private readonly int _dimensions;
-
-
+        
         private readonly Dictionary<int, HyperVector> _associativeMemory = new Dictionary<int, HyperVector>();
 
 
@@ -21,6 +20,10 @@ namespace HyperSharp {
             _dimensions = dimensions;
         }
 
+        /// <summary>
+        /// Initializes the Processor with a specific hyper-dimension
+        /// </summary>
+        /// <param name="dimensions"></param>
         private void Init(int dimensions) {
             // set up the grayscale color code 0 - 255
             for (int i = 0; i < 256; i++) {
@@ -38,13 +41,20 @@ namespace HyperSharp {
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public HyperVector Encode(int[] image) {
+        public HyperVector Encode(int[][] image) {
             HyperVector rvEncodedImage = new HyperVector(_dimensions, false);
-            for (int pixelIndex = 0; pixelIndex < image.Length; pixelIndex++) {
-                int pixelValue = image[pixelIndex];
-                HyperVector temp = _positionLookup[pixelIndex].Bundle(_grayscaleLookup[pixelValue]);
-                rvEncodedImage.Bind(temp);
+
+            for (int i = 0; i < image.Length; i++) {
+                
             }
+                // for (int j = 0; j < image[i].Length; j++) {
+                //     
+                // }
+            // for (int pixelIndex = 0; pixelIndex < image.Length; pixelIndex++) {
+            //     int pixelValue = image[pixelIndex];
+            //     HyperVector temp = _positionLookup[pixelIndex].Bundle(_grayscaleLookup[pixelValue]);
+            //     rvEncodedImage.Bind(temp);
+            // }
 
             return rvEncodedImage;
         }
@@ -53,11 +63,11 @@ namespace HyperSharp {
         /// Train an associative memory
         /// </summary>
         /// <param name="trainingImages"></param>
-        /// <param name="trainingLabel"></param>
-        public void Train(int[][] trainingImages, int[] trainingLabel) {
-            for (int i = 0; i < trainingLabel.Length; i++) {
-                int label = trainingLabel[i];
-                int[] trainingImage = trainingImages[i];
+        /// <param name="trainingLabels"></param>
+        public void Train(int[][][] trainingImages, int[] trainingLabels) {
+            for (int i = 0; i < trainingLabels.Length; i++) {
+                int label = trainingLabels[i];
+                int[][] trainingImage = trainingImages[i];
 
                 HyperVector encodedImage = Encode(trainingImage);
                 

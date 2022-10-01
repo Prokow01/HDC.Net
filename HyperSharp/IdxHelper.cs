@@ -41,8 +41,6 @@ namespace HyperSharp {
         
         public static List<MnistDigit> FetchMnistSet(string dataFilePath, string labelFilePath) {
             List<MnistDigit> rv = new List<MnistDigit>();
-
-            
             
             using (BinaryReader dataRead = new BinaryReader(new FileStream(dataFilePath, FileMode.Open))) {
                 using (BinaryReader labelRead = new BinaryReader(new FileStream(labelFilePath, FileMode.Open))) {

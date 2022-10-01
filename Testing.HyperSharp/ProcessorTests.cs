@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using HyperSharp;
 using HyperSharp.MNIST;
@@ -14,13 +15,31 @@ namespace Testing.HyperSharp {
         // public IdxHelper IdxHelper = new IdxHelper();
         private List<MnistDigit> _trainData = IdxHelper.FetchMnistSet(Train_Data_Path, Train_Labels_Path);
         private List<MnistDigit> _testData = IdxHelper.FetchMnistSet(Test_Data_Path, Test_Labels_Path);
+
+
+        private const int  DimensionSize = 10000;
+
+        private Processor _mnistProcessor;
         
         [Fact]
         public void IdxLoadDataTest() {
             _trainData.Count.Should().Be(60000);
             _testData.Count.Should().Be(10000);
         }
-        
+
+
+
+        [Fact]
+        public void TestClassification() {
+            _mnistProcessor = new Processor(DimensionSize);
+
+            var data = (from d in _trainData
+                        select d.Pixels).ToArray();
+            var labels = (from d in _trainData
+                          select d.Label).ToArray();
+            
+            _mnistProcessor.Train(data, labels);
+        }
     }
 }
 
