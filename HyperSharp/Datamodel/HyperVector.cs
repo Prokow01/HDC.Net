@@ -127,7 +127,6 @@ namespace HyperSharp.Datamodel {
         /// <returns></returns>
         public static HyperVector NewVector(int dimensions=DefaultDimensions) {
             HyperVector rVector = new HyperVector(dimensions);
-            
             rVector.InitializeBinary();
 
             return rVector;

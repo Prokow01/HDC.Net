@@ -18,13 +18,13 @@ namespace HyperSharp {
         /// </summary>
         public Processor(int dimensions) {
             _dimensions = dimensions;
+            Init();
         }
 
         /// <summary>
         /// Initializes the Processor with a specific hyper-dimension
         /// </summary>
-        /// <param name="dimensions"></param>
-        private void Init(int dimensions) {
+        private void Init() {
             // set up the grayscale color code 0 - 255
             for (int i = 0; i < 256; i++) {
                 _grayscaleLookup[i] = new HyperVector(_dimensions);
@@ -47,6 +47,7 @@ namespace HyperSharp {
             for (int i = 0; i < image.Length; i++) {
                 
             }
+            
                 // for (int j = 0; j < image[i].Length; j++) {
                 //     
                 // }
@@ -70,7 +71,10 @@ namespace HyperSharp {
                 int[][] trainingImage = trainingImages[i];
 
                 HyperVector encodedImage = Encode(trainingImage);
-                
+
+                if (!_associativeMemory.ContainsKey(label)) {
+                    _associativeMemory[label] = new HyperVector();
+                }
                 _associativeMemory[label].Bind(encodedImage);
             }
         }

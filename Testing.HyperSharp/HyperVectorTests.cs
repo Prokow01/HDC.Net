@@ -16,7 +16,23 @@ namespace Testing.HyperSharp {
     /// Tests for the basic HyperVector Class
     /// </summary>
     public class HyperVectorTests {
-
+        /// <summary>
+        /// Basic tests that the structure operates as expected
+        /// </summary>
+        [Fact]
+        public void EmptyTests() {
+            int vectorSize = 10000;
+            HyperVector a = new HyperVector(vectorSize, false);
+            HyperVector b = new HyperVector(vectorSize, false);
+            
+            // check the simple initialization
+            for (int i = 0; i < vectorSize; i++) {
+                a.Get(i).Should().Be(0);
+                b.Get(i).Should().Be(0);
+            }
+        }
+        
+        
         /// <summary>
         /// Basic tests that the structure operates as expected
         /// </summary>
